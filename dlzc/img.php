@@ -18,7 +18,7 @@
 	//imagefill($im,0,0,$dian);
 	imageline($im,10,5,50,rand(0,20),$xian);//绘制一根线条
 	
-	for($i = 0;$i < 100;$i++)//使用for循环来绘制多个噪点
+	for($i = 0;$i < 200;$i++)//使用for循环来绘制多个噪点
 	{
 		imagesetpixel($im,rand(10,50),rand(5,40),$dian);
 	}

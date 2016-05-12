@@ -17,6 +17,6 @@ echo '用户信息：<br/>';
 echo '用户ID：'.$userno.'<br/>';
 echo '用户名：'.$username.'<br/>';
 echo '邮箱：'.$row['email'].'<br/>';
-echo '注册日期：'.date("Y-m-d", $row['datetime']).'<br/>';
-echo '<a href="login.php?action=logout">注销</a> 登录<br/>';
+echo '注册日期：'.date("Y-m-d H:i:s", $row['datetime']).'<br/>';
+echo '<a href = "login.html">其他账号登录</a>';
 ?>

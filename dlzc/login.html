@@ -4,13 +4,14 @@
 	<meta http-equiv="Content-Type" content="txt/html;charset=utf-8" />
 	<title>小郑</title>
 	<style type="text/css">
+		body{font-family: 幼圆;font-size: 13px;}
 	    html{font-size:12px;}
-	    fieldset{width:520px; margin: 0 auto;}
+	    fieldset{width:300px; margin: 0 auto;}
 	    legend{font-weight:bold; font-size:14px;}
 	    label{float:left; width:70px; margin-left:10px;}
 	    .left{margin-left:80px;}
 	    .input{width:150px;}
-	    span{color: #666666;}
+	    a{font-size:10px;margin-left:250px;}
 	</style>
 </head>
 <body>
@@ -36,8 +37,9 @@ function InputCheck(LoginForm)
 </script>
 
 	<fieldset>
-		<legend>用户登录</legend>
+		<legend>图灵机器人登录</legend>
 		<form name="LoginForm" method="post" action="login.php" onSubmit="return InputCheck(this)">
+			<a href = "reg.html">注册账号</a> 
 			<p>
 				<label for="username" class="label">用户名：</label>
 				<input id="username" name="username" type="text" class="input" />
@@ -48,7 +50,7 @@ function InputCheck(LoginForm)
 			</p>
 			<p>
 				<input type="submit" name="submit" value="登录" class="left" />
-				<button onclick="javascript:window.location.href='reg.html';">注册</button> 
+				<input type="reset" name="button" id="button" value="重置" />
 			</p>
 			</form>
 	</fieldset>
