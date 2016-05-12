@@ -23,9 +23,6 @@ if(strlen($password) < 6){
 if(!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/', $email)){
     exit('错误：电子邮箱格式错误。<a href="javascript:history.back(-1);">返回</a>');
 }
-if(!$image == $image2){
-	exit('错误：验证码错误。<a href="javascript:history.back(-1);">返回</a>');
-}
 
 //检测用户名是否已经存在
 $query = "select userno from users where username = '$username' limit 1";
@@ -38,12 +35,19 @@ if(mysqli_fetch_array($check_query)){
 $password = MD5($password);//密码加密
 $datetime = time();
 
-$sql = "INSERT INTO users(username,password,email,datetime)VALUES('$username','$password','$email',
-$datetime)";
-if(mysqli_query($con,$sql)){
-    exit('用户注册成功！点击此处 <a href="login.html">登录</a>');
-} else {
-    echo '抱歉！添加数据失败：'.mysqli_error($con).'<br/>';
-    echo '点击此处 <a href="javascript:history.back(-1);">返回</a>';
-}
+if(isset($_POST['submit']))//当用户点击提交时
+    {
+        if($image == $image2)//判断验证码是否输入正确
+        {
+            $sql = "INSERT INTO users(username,password,email,datetime)VALUES('$username','$password','$email',$datetime)";//SQL语句
+            mysqli_query($con,$sql);//执行SQL语句，写入用户数据
+            exit('用户注册成功！点击此处 <a href="login.html">登录</a>');
+        }
+        else
+        {
+            echo '验证码错误！';
+            echo '点击此处 <a href="javascript:history.back(-1);">返回</a>';
+            exit;
+        }
+    }
 ?>
