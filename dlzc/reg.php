@@ -50,4 +50,12 @@ if(isset($_POST['submit']))//当用户点击提交时
             exit;
         }
     }
+/*$sql = "INSERT INTO users(username,password,email,datetime)VALUES('$username','$password','$email',
+$datetime)";
+if(mysqli_query($con,$sql)){
+    exit('用户注册成功！点击此处 <a href="login.html">登录</a>');
+} else {
+    echo '抱歉！添加数据失败：'.mysqli_error($con).'<br/>';
+    echo '点击此处 <a href="javascript:history.back(-1);">返回</a>';
+}*/
 ?>
