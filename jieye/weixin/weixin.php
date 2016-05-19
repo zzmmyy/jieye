@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>易源_笑话大全</title>
+<title>微信热门精选</title>
 </head>
 <body>
 <?php
-$page = $_POST['page'];
-
-class xiaoHua
-{
-    public function xh($num)
-    {
-
+$numb = $_POST['number'];
+$word = $_POST['word']; 
+class weiXin{
+    public function shiJan($num,$shij){
     $ch = curl_init();
-    $url = "http://apis.baidu.com/showapi_open_bus/showapi_joke/joke_text?page=$num";
+    $url = "http://apis.baidu.com/txapi/weixin/wxhot?num=$num&rand=1&word=$shij";
     $header = array(
         'apikey: 3dbf5144aafe85722cb045424b109e1a',
     );
@@ -24,14 +21,13 @@ class xiaoHua
     curl_setopt($ch , CURLOPT_URL , $url);
     $res = curl_exec($ch);
 
-    $a = json_decode($res);
-    return $a;
-  
+    var_dump(json_decode($res));
+    }
 }
-}
-$xiaohua = new xiaoHua();
-$pg = $xiaohua->xh($page);
-print_r($pg);
+$shijian = new weiXin();
+$sj = $shijian->shiJan($numb,$word);
+
+print_r($sj);
 ?>
 </body>
 </html>

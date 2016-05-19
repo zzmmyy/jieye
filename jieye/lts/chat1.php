@@ -1,15 +1,17 @@
 <?php
 session_start();
-include('../conn.php');
+include('../conn.php')
 //调用图灵机器人API
-Class Turing{
-    public function call(){
+$usermessage = $_POST['usermessage'];
+$uno = $_SESSION['userno'];
+Class Api{
+    public function tuling($info,$userid){
 
         //初始化curl一个curl会话
         $ch = curl_init();
 
             //设置url
-        $url = 'http://apis.baidu.com/turing/turing/turing?key=879a6cb3afb84dbf4fc84a1df2ab7319&info=%E6%9F%A5%E5%A4%A9%E6%B0%94%E2%80%9C%E5%8C%97%E4%BA%AC%E4%BB%8A%E5%A4%A9%E5%A4%A9%E6%B0%94%E2%80%9D&userid=eb2edb736';
+        $url = "http://apis.baidu.com/turing/turing/turing?key=879a6cb3afb84dbf4fc84a1df2ab7319&info=$info&userid=$userid";
         $header = array(
         'apikey: 3dbf5144aafe85722cb045424b109e1a',
         );
@@ -21,17 +23,17 @@ Class Turing{
         curl_setopt($ch, CURLOPT_URL , $url);
         $res = curl_exec($ch);
         //解析json数据
-        $test = json_decode($res);
-
-        //获取时间
-        $time = date('Y-m-d H:i:s');
+        $a = json_decode($res);
+        return $a;
     }
+    $lei = new Api();
+    $chat = $lei->tuling($usermessage,$uno);
     
-    public function usermessages($usermessage, $tumessage, $time){
+    public function usermessages($usermessage,$tumessage,$time,$uno){
 
         //将各参数插入turing表
-        $sql = "INSERT INTO usermessages(usermessage, tumessage, time)
-                VALUES('$usermessage', '$tumessage', '$time')";
+        $sql = "INSERT INTO usermessages(usermessage,tumessage,time,userno)
+                VALUES('$usermessage','$tumessage','$time','$uno')";
         mysqli_query($con,$sql);  
     }
     

@@ -47,7 +47,7 @@ function InputCheck(ChatForm)
 
 			<p>
 				<label for="usermessage" class="label">一起聊天吧：</label><br/><br/>
-				<textarea id="usermessage" name="shijian" cols="50" rows="4"></textarea>
+				<textarea id="usermessage" name="usermessage" cols="50" rows="4"></textarea>
 			</p>
 			<p>
 				<input type="submit" name="submit" value="发送" class="left" />
