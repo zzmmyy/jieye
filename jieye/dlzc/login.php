@@ -26,8 +26,7 @@ if($result = mysqli_fetch_array($check_query)){
     //登录成功
     $_SESSION['username'] = $username;
     $_SESSION['userno'] = $result['userno'];
-    echo $username,' 欢迎你！进入 <a href="../lts/chat.php">图灵聊天室</a><br />';
-    echo '点击此处 <a href="login.php?action=logout">注销</a> 登录！<br />';
+    echo $username,' 欢迎你！点击进入 <a href="../tuling/tuling.php">图灵聊天室</a><br />';
     exit;
 } else {
     exit('登录失败！点击此处 <a href="javascript:history.back(-1);">返回</a> ');
