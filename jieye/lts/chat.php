@@ -42,8 +42,19 @@ function InputCheck(ChatForm)
 		<legend>图灵机器人</legend>
 		<div name="div" class="center">
 		<!--输出php-->
+		<?php
+		session_start();
+		include 'chat1.php';
+		$time = date('H:i:s');
+
+		$a = new api();
+		$a->tuling($usermessage,$uno);
+		$a->usermessages($usermessage,$tumessage,$time,$uno);
+		$a->select();
+		
+		?>
 		</div>
-		<form method="post" action="class.php" onSubmit="return InputCheck(this)">
+		<form method="post" action="chat.php" onSubmit="return InputCheck(this)">
 
 			<p>
 				<label for="usermessage" class="label">一起聊天吧：</label><br/><br/>

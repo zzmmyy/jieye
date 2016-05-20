@@ -1,16 +1,15 @@
 <?php
-session_start();
-include('../conn.php')
-//调用图灵机器人API
+include('../conn.php');
 $usermessage = $_POST['usermessage'];
-$uno = $_SESSION['userno'];
-Class Api{
-    public function tuling($info,$userid){
+//调用图灵机器人API
+class api
+{
+    public function tuling($info,$userid,$tu){
 
         //初始化curl一个curl会话
         $ch = curl_init();
 
-            //设置url
+        if($tu != null){   //设置url
         $url = "http://apis.baidu.com/turing/turing/turing?key=879a6cb3afb84dbf4fc84a1df2ab7319&info=$info&userid=$userid";
         $header = array(
         'apikey: 3dbf5144aafe85722cb045424b109e1a',
@@ -26,8 +25,7 @@ Class Api{
         $a = json_decode($res);
         return $a;
     }
-    $lei = new Api();
-    $chat = $lei->tuling($usermessage,$uno);
+    }
     
     public function usermessages($usermessage,$tumessage,$time,$uno){
 
@@ -39,21 +37,21 @@ Class Api{
     
     //从数据库中取出各字段
     public function select(){
-        $selectSql = "SELECT username,usermessage,tumessage,time
+        $selectSql = "SELECT userno,username,usermessage,tumessage,time
         FROM usermessages,users
-        WHERE users.userno=usermessages.userno
-        AND username='$usrname'";
+        WHERE users.userno=usermessages.userno";
 
-        $row = mysql_fetch_array();
+        $row = mysqli_fetch_array($selectSql);
         $username = $row['usrename'];
         $usermessage = $row['usermessage'];
         $tumessage = $row['tumessage'];
         $time = $row['time'];
 
-        echo $time."<br>".$username.":<br>".$usermessage."<br>图灵:<br>".$turingword."<br>";
+        echo $time."<br>".$username.":<br>".$usermessage."<br>图灵:<br>".$tumessage."<br>";
                 
-            }      
-
+    }   
+   
 }
-
+$x = new api();   
+$uno = $x->select();
 ?>
