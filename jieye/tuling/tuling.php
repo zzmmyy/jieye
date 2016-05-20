@@ -13,7 +13,7 @@
         input{width:100px;}
         textarea{margin-left:15px;border:solid bisque;border-style:inset;border-width:2px;}
         .bottom{margin-left:235px;width:940px;height:50px;font-size:30px;color:cornflowerblue;}
-        .center{margin-left:15px;border:solid bisque;border-style:inset;border-width:5px;width:350px;height:260px;cursor: pointer;background-color: white;}
+        .center{margin-left:15px;border:solid bisque;border-style:inset;border-width:5px;width:350px;height:260px;cursor: pointer;background-color: white;color:black;}
         .background1{background-image:url(12.jpg);width:700px;margin-left:100px;}
         .background{background-image:url(15.jpg);width:950px;height:600px;}
     </style>
@@ -43,7 +43,7 @@ function InputCheck(ChatForm)
         <div name="div" class="center">
         <!--输出php-->
         <?php
-        error_reporting(0);
+       
         $usermessage = $_POST['usermessage'];
         class tuling
         {
